@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block title %}🌎Crear una Nueva Categoria!{% endblock  %}
+{% block content %}
+
+
+{% if user.is_authenticated %}
+    <h1>Añadir una Categoria en 🌎BloogODS</h1>
+    <br/><br/>
+
+    <div class="small">
+    <div class="form-group">
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button class="btn btn-primary">Añadir Categoría</button>
+    </div
+{% else %}
+
+¿Qué haces aquí? No puedes estar aquí... 🤨📸 (Este Post no te pertenece o estás desconectado) 🚓
+    
+{% endif %}
+
+
+{% endblock  %}

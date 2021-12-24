@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+
+<h1>Posteos🗣️</h1>
+<hr>
+<ul>
+{% for post in object_list %}
+    <li><a href="{% url 'article-detail' post.pk %}">{{post.title}}</a> 
+        
+        - <a href="{% url 'category' post.category|slugify %}">📰{{ post.category }}</a>
+        - (👤{{post.author.username}} {{post.author.last_name}}) - 
+        (📅{{ post.post_date }}) - <small>
+            
+            {% if user.is_authenticated %}
+                - <a href="{% url 'update_post' post.pk %}">(Editar✍️)
+            {% endif %}
+        
+    </small></a><br/>
+    {{post.body|slice:":200"|safe }}</li>
+{% endfor %}
+</ul>
+<hr>
+
+
+{% endblock  %}
